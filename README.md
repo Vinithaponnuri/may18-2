@@ -1,2 +1,17 @@
-# may18-2
-ass2
+class Solution:
+    def subarraysDivByK(self, num: List[int], k: int) -> int:
+        c=0
+        sums=0
+        d={}
+        d[0]=1
+        for i in num:
+            c+=i
+            c%=k
+            if c<0:
+                c+=k
+            if c in d:
+                sums+=d[c]
+            else:
+                d[c]=0
+            d[c]+=1
+        return sums
